@@ -1,27 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+
+    /* Sistema de Cores - Tema Claro */
+    --background: 255, 255, 255;
+    --foreground: 30, 32, 45;
+    --card: 255, 255, 255;
+    --card-border: 230, 232, 240;
+    --card-foreground: 30, 32, 45;
+    --primary-lighter: 232, 226, 255;
+    --primary-light: 193, 143, 252;
+    --primary-main: 136, 58, 229;
+    --primary-dark: 95, 18, 187;
+    --primary-pink: 224, 31, 241;
+    --secondary-main: 229, 143, 58;
+    --secondary-light: 255, 215, 128;
+    --secondary-dark: 196, 138, 12;
+    --neutral-50: 145, 145, 170;
+    --neutral-60: 24, 23, 33;
+    --neutral-70: 65, 67, 78;
+    --neutral-80: 45, 47, 55;
+    --neutral-90: 30, 32, 45;
+    --muted: 245, 246, 250;
+    --muted-foreground: 102, 104, 115;
+    --success: 0, 170, 102;
+    --warning: 245, 154, 35;
+    --error: 236, 33, 36;
+    --info: 31, 120, 245;
+  }
+
+  .dark {
+    --background: 5, 6, 15;
+    --foreground: 255, 255, 255;
+    --card: 24, 23, 33, 0.5;
+    --card-border: 255, 255, 255, 0.1;
+    --card-foreground: 255, 255, 255;
+    --primary-lighter: 213, 209, 245;
+    --primary-light: 193, 143, 252;
+    --primary-main: 136, 58, 229;
+    --primary-dark: 95, 18, 187;
+    --primary-pink: 224, 31, 241;
+    --secondary-main: 229, 143, 58;
+    --secondary-light: 255, 215, 128;
+    --secondary-dark: 196, 138, 12;
+    --neutral-50: 145, 145, 149;
+    --neutral-60: 24, 23, 33;
+    --neutral-70: 18, 23, 26;
+    --neutral-80: 17, 18, 27;
+    --neutral-90: 255, 255, 255;
+    --muted: 20, 21, 30;
+    --muted-foreground: 160, 160, 170;
+    --success: 0, 200, 120;
+    --warning: 255, 170, 40;
+    --error: 255, 65, 70;
+    --info: 40, 140, 255;
+  }
+
+  /* Elementos HTML Base */
+  html {
+    @apply antialiased text-base;
+  }
+
+  /* Aplicando transição global para todos os elementos */
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  /* Aplicando estilos de foco consistentes */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-main/50 ring-offset-2 ring-offset-white dark:ring-offset-base-dark;
+  }
+
+  body {
+    @apply bg-base-light dark:bg-base-dark text-neutral-90 dark:text-white min-h-screen;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight text-neutral-90 dark:text-white;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+
+  h6 {
+    @apply text-base md:text-lg;
+  }
+
+  p {
+    @apply leading-relaxed text-neutral-80 dark:text-gray-200;
+  }
+
+  a {
+    @apply text-primary-main hover:text-primary-dark focus-visible:text-primary-dark underline-offset-4 hover:underline;
+  }
+
+  ::selection {
+    @apply bg-primary-main/30 text-neutral-90 dark:bg-primary-main/50 dark:text-white;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Componentes personalizados */
+  .input-base {
+    @apply h-12 rounded-xl border border-gray-200 dark:border-neutral-60 bg-white dark:bg-white/5 px-4 py-2 text-neutral-90 dark:text-white shadow-sm focus-visible:border-primary-main/50;
+  }
+
+  .card-base {
+    @apply bg-white dark:bg-neutral-60/50 border border-gray-200 dark:border-white/10 rounded-xl shadow-sm transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:border-primary-main/30 hover:shadow-md hover:shadow-primary-main/5 transition-all duration-300;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors;
+  }
+
+  .badge-primary {
+    @apply bg-primary-main/10 text-primary-main;
+  }
+
+  .badge-secondary {
+    @apply bg-secondary-main/10 text-secondary-main;
+  }
+
+  .badge-success {
+    @apply bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400;
+  }
+
+  .badge-error {
+    @apply bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400;
+  }
+
+  .badge-info {
+    @apply bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400;
+  }
 }
 
 @layer utilities {
+  /* Utilitários personalizados */
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .glass-effect {
+    @apply bg-white/90 dark:bg-neutral-70/30 backdrop-blur-md border border-gray-200/50 dark:border-white/10;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
+
+  .bg-card {
+    @apply bg-white dark:bg-neutral-60/50 border border-gray-200 dark:border-white/10;
+  }
+
+  .text-card-title {
+    @apply text-neutral-90 dark:text-white;
+  }
+
+  .text-card-description {
+    @apply text-neutral-70 dark:text-gray-400;
+  }
+
+  .hover-effect {
+    @apply hover:scale-[1.02] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-primary-main/20 transition-all duration-300;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Animações */
+@keyframes bouncing {
+  20% {
+    transform: translateY(-6px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+  80% {
+    transform: translateY(-0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.loader {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--secondary-main);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: rgb(var(--muted));
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgb(var(--primary-main), 0.5);
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-horizontal {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 300ms, transform 300ms;
 }

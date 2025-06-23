@@ -1,7 +1,7 @@
-package com.example.demo.servico;
+package com.demo.servico;
 
-import com.example.demo.modelo.NucleoConhecimento;
-import com.example.demo.repositorio.NucleoConhecimentoRepository;
+import com.demo.modelo.NucleoConhecimento;
+import com.demo.repositorio.NucleoConhecimentoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

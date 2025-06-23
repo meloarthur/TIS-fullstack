@@ -1,8 +1,8 @@
-package com.example.demo.repositorio;
+package com.demo.repositorio;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.modelo.NucleoConhecimento;
+import com.demo.modelo.NucleoConhecimento;
 
 import java.util.Optional;
 

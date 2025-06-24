@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS public.nucleo_conhecimento
     TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.nucleo_conhecimento
-    OWNER to pvshake;
+    OWNER to postgres;
 
 CREATE TABLE IF NOT EXISTS public.disciplina
 (
@@ -66,13 +66,14 @@ CREATE TABLE IF NOT EXISTS public.disciplina
     );
 
 ALTER TABLE IF EXISTS public.disciplina
-    OWNER TO pvshake;
+    OWNER TO postgres;
 
 CREATE TABLE IF NOT EXISTS public.docente
 (
     id integer NOT NULL DEFAULT nextval('docente_id_seq'::regclass),
     nucleo_id integer NOT NULL,
     nome character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    username character varying(30) COLLATE pg_catalog."default" NOT NULL,
     email character varying(255) COLLATE pg_catalog."default" NOT NULL,
     data_ingresso date NOT NULL,
     status character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -82,51 +83,7 @@ CREATE TABLE IF NOT EXISTS public.docente
     );
 
 ALTER TABLE IF EXISTS public.docente
-    OWNER TO pvshake;
-
-CREATE TABLE IF NOT EXISTS public.nucleo_disciplina
-(
-    nucleo_id integer NOT NULL,
-    disciplina_id integer NOT NULL,
-    CONSTRAINT nucleo_disciplina_pkey PRIMARY KEY (nucleo_id, disciplina_id),
-    CONSTRAINT nucleo_disciplina_disciplina_id_fkey FOREIGN KEY (disciplina_id)
-    REFERENCES public.disciplina (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE,
-    CONSTRAINT nucleo_disciplina_nucleo_id_fkey FOREIGN KEY (nucleo_id)
-    REFERENCES public.nucleo_conhecimento (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE
-    );
-
-ALTER TABLE IF EXISTS public.nucleo_disciplina
-    OWNER TO pvshake;
-
-CREATE INDEX IF NOT EXISTS idx_nucleo_disciplina_nucleo_id
-    ON public.nucleo_disciplina USING btree
-    (nucleo_id ASC NULLS LAST);
-
-CREATE TABLE IF NOT EXISTS public.nucleo_docente
-(
-    nucleo_id integer NOT NULL,
-    docente_id integer NOT NULL,
-    CONSTRAINT nucleo_docente_pkey PRIMARY KEY (nucleo_id, docente_id),
-    CONSTRAINT nucleo_docente_docente_id_fkey FOREIGN KEY (docente_id)
-    REFERENCES public.docente (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE,
-    CONSTRAINT nucleo_docente_nucleo_id_fkey FOREIGN KEY (nucleo_id)
-    REFERENCES public.nucleo_conhecimento (id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE
-    );
-
-ALTER TABLE IF EXISTS public.nucleo_docente
-    OWNER TO pvshake;
-
-CREATE INDEX IF NOT EXISTS idx_nucleo_docente_nucleo_id
-    ON public.nucleo_docente USING btree
-    (nucleo_id ASC NULLS LAST);
+    OWNER TO postgres;
 
 INSERT INTO nucleo_conhecimento (nome, area, facilitador, descricao) VALUES
 ('Núcleo de Inteligência Artificial', 'Tecnologia', 'Prof. João Silva', 'Foco em IA e Machine Learning aplicados a problemas reais.'),
@@ -147,9 +104,9 @@ INSERT INTO disciplina (nucleo_id, codigo, nome, curso, matriz, carga_horaria_te
 (2, 'SAU402', 'Anatomia Humana I', 'Medicina', '2023/2', 75, 45, 120),
 (9, 'ART150', 'História da Arte Moderna', 'Artes Visuais', '2024/1', 60, 0, 60);
 
-INSERT INTO docente (nucleo_id, nome, email, data_ingresso, status) VALUES
-(1, 'Ana Carolina Santos', 'ana.santos@universidade.com', '2015-08-01', 'Ativo'),
-(1, 'Bruno Henrique Costa', 'bruno.costa@universidade.com', '2008-03-10', 'Ativo'),
-(1, 'Carla Fernanda Lima', 'carla.lima@universidade.com', '2020-01-20', 'Inativo'),
-(2, 'Daniel Pereira Rocha', 'daniel.rocha@universidade.com', '2005-11-05', 'Inativo'),
-(2, 'Eduarda Almeida Sousa', 'eduarda.sousa@universidade.com', '2018-09-15', 'Ativo');
+INSERT INTO docente (nucleo_id, nome, username, email, data_ingresso, status) VALUES
+(1, 'Ana Carolina Santos', 'ana.santos', 'ana.santos@universidade.com', '2015-08-01', 'Ativo'),
+(1, 'Bruno Henrique Costa', 'bruno.costa', 'bruno.costa@universidade.com', '2008-03-10', 'Ativo'),
+(1, 'Carla Fernanda Lima', 'carla.lima', 'carla.lima@universidade.com', '2020-01-20', 'Inativo'),
+(2, 'Daniel Pereira Rocha', 'daniel.rocha', 'daniel.rocha@universidade.com', '2005-11-05', 'Inativo'),
+(2, 'Eduarda Almeida Sousa', 'eduarda.sousa', 'eduarda.sousa@universidade.com', '2018-09-15', 'Ativo');

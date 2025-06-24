@@ -5,7 +5,7 @@ import {
   ArteCarrossel2,
   ArteCarrossel3,
   ArteCarrossel4,
-  LogoAkcitBranca,
+  LogoUfgBranco,
 } from '../../../assets';
 
 const images = [ArteCarrossel1, ArteCarrossel2, ArteCarrossel3, ArteCarrossel4];
@@ -38,7 +38,7 @@ const LoginCarroussel = () => {
         className='absolute left-6 top-6 z-10'
         width={115}
         height={40}
-        src={LogoAkcitBranca}
+        src={LogoUfgBranco}
         alt='Logo Akcit Branco'
       />
       {images && images.length > 0 ? (
@@ -61,7 +61,7 @@ const LoginCarroussel = () => {
         </div>
       )}
       <h1 className='text-white text-center text-[28px] font-medium absolute bottom-20 w-80'>
-        Tecnologia Imersiva Impulsionando mentes
+        Bem-vindo a plataforma de gestão de núcleos acadêmicos da UFG
       </h1>
       <div className='absolute bottom-10 flex justify-center gap-2'>
         {images.map((_, index) => (

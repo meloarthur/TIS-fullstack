@@ -11,7 +11,7 @@ export default function RootLayout({
     <html lang='pt-BR' suppressHydrationWarning>
       <head></head>
       <body
-        className={`min-h-screen w-full bg-base-dark font-inter flex flex-col custom-scroll`}
+        className={`min-h-screen w-full bg-base-dark text-base-light font-inter flex flex-col custom-scroll`}
       >
         {children}
         <Toaster duration={1500} closeButton />

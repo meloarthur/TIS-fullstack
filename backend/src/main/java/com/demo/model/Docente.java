@@ -18,6 +18,7 @@ public class Docente {
     private String username;
     private String email;
     private Date data_ingresso;
+    private String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nucleo_id")
@@ -27,8 +28,12 @@ public class Docente {
     public Docente() {
     }
 
-    public Docente(String nome, NucleoConhecimento nucleoConhecimento) {
+    public Docente(String nome, String username, String email, Date data_ingresso, String status, NucleoConhecimento nucleoConhecimento) {
         this.nome = nome;
+        this.username = username;
+        this.email = email;
+        this.data_ingresso = data_ingresso;
+        this.status = status;
         this.nucleoConhecimento = nucleoConhecimento;
     }
 
@@ -70,6 +75,14 @@ public class Docente {
 
     public void setDataIngresso(Date data_ingresso) {
         this.data_ingresso = data_ingresso;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public NucleoConhecimento getNucleoConhecimento() {

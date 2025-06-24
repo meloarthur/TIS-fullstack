@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS public.nucleo_conhecimento
     TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.nucleo_conhecimento
-    OWNER to postgres;
+    OWNER to pvshake;
 
 CREATE TABLE IF NOT EXISTS public.disciplina
 (
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS public.disciplina
     );
 
 ALTER TABLE IF EXISTS public.disciplina
-    OWNER TO postgres;
+    OWNER TO pvshake;
 
 CREATE TABLE IF NOT EXISTS public.docente
 (
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS public.docente
     );
 
 ALTER TABLE IF EXISTS public.docente
-    OWNER TO postgres;
+    OWNER TO pvshake;
 
 INSERT INTO nucleo_conhecimento (nome, area, facilitador, descricao) VALUES
 ('Núcleo de Inteligência Artificial', 'Tecnologia', 'Prof. João Silva', 'Foco em IA e Machine Learning aplicados a problemas reais.'),

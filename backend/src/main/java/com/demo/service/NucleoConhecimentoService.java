@@ -1,7 +1,7 @@
-package com.demo.servico;
+package com.demo.service;
 
-import com.demo.modelo.NucleoConhecimento;
-import com.demo.repositorio.NucleoConhecimentoRepository;
+import com.demo.model.NucleoConhecimento;
+import com.demo.repository.NucleoConhecimentoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +21,14 @@ public class NucleoConhecimentoService {
         return repository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Optional<NucleoConhecimento> buscarPorId(Long id) {
-        return repository.findById(id);
+        Optional<NucleoConhecimento> nucleo = repository.findById(id);
+        nucleo.ifPresent(nc -> {
+            nc.getDocentes().size();
+            nc.getDisciplinas().size();
+        });
+        return nucleo;
     }
 
     @Transactional

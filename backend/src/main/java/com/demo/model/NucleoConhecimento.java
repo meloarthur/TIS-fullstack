@@ -1,6 +1,8 @@
-package com.demo.modelo;
+package com.demo.model;
 
 import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "nucleo_conhecimento")
@@ -22,6 +24,12 @@ public class NucleoConhecimento {
 
     @Column(nullable = false, length = 1000)
     private String descricao;
+
+    @OneToMany(mappedBy = "nucleoConhecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Docente> docentes = new HashSet<>();
+
+    @OneToMany(mappedBy = "nucleoConhecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Disciplina> disciplinas = new HashSet<>();
 
     public NucleoConhecimento() {
     }
@@ -71,5 +79,42 @@ public class NucleoConhecimento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Set<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public void setDocentes(Set<Docente> docentes) {
+        this.docentes = docentes;
+    }
+
+    public Set<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(Set<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    // Métodos de conveniência para adicionar/remover
+    public void addDocente(Docente docente) {
+        this.docentes.add(docente);
+        docente.setNucleoConhecimento(this);
+    }
+
+    public void removeDocente(Docente docente) {
+        this.docentes.remove(docente);
+        docente.setNucleoConhecimento(null);
+    }
+
+    public void addDisciplina(Disciplina disciplina) {
+        this.disciplinas.add(disciplina);
+        disciplina.setNucleoConhecimento(this);
+    }
+
+    public void removeDisciplina(Disciplina disciplina) {
+        this.disciplinas.remove(disciplina);
+        disciplina.setNucleoConhecimento(null);
     }
 }

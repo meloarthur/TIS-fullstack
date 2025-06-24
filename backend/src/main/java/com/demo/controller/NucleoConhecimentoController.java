@@ -1,7 +1,7 @@
 package com.demo.controller;
 
-import com.demo.modelo.NucleoConhecimento;
-import com.demo.servico.NucleoConhecimentoService;
+import com.demo.model.NucleoConhecimento;
+import com.demo.service.NucleoConhecimentoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

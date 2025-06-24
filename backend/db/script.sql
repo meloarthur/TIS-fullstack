@@ -1,16 +1,16 @@
-CREATE DATABASE postgres
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'pt-BR'
-    LC_CTYPE = 'pt-BR'
-    LOCALE_PROVIDER = 'libc'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
+-- CREATE DATABASE postgres
+--     WITH
+--     OWNER = postgres
+--     ENCODING = 'UTF8'
+--     LC_COLLATE = 'pt-BR'
+--     LC_CTYPE = 'pt-BR'
+--     LOCALE_PROVIDER = 'libc'
+--     TABLESPACE = pg_default
+--     CONNECTION LIMIT = -1
+--     IS_TEMPLATE = False;
 
-COMMENT ON DATABASE postgres
-    IS 'default administrative connection database';
+-- COMMENT ON DATABASE postgres
+--     IS 'default administrative connection database';
 
 CREATE SEQUENCE IF NOT EXISTS public.nucleo_conhecimento_id_seq
     INCREMENT 1
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS public.nucleo_conhecimento
     TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.nucleo_conhecimento
-    OWNER to postgres;
+    OWNER to pvshake;
 
 CREATE TABLE IF NOT EXISTS public.disciplina
 (
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS public.disciplina
     );
 
 ALTER TABLE IF EXISTS public.disciplina
-    OWNER TO postgres;
+    OWNER TO pvshake;
 
 CREATE TABLE IF NOT EXISTS public.docente
 (
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS public.docente
     );
 
 ALTER TABLE IF EXISTS public.docente
-    OWNER TO postgres;
+    OWNER TO pvshake;
 
 CREATE TABLE IF NOT EXISTS public.nucleo_disciplina
 (
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS public.nucleo_disciplina
     );
 
 ALTER TABLE IF EXISTS public.nucleo_disciplina
-    OWNER TO postgres;
+    OWNER TO pvshake;
 
 CREATE INDEX IF NOT EXISTS idx_nucleo_disciplina_nucleo_id
     ON public.nucleo_disciplina USING btree
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS public.nucleo_docente
     );
 
 ALTER TABLE IF EXISTS public.nucleo_docente
-    OWNER TO postgres;
+    OWNER TO pvshake;
 
 CREATE INDEX IF NOT EXISTS idx_nucleo_docente_nucleo_id
     ON public.nucleo_docente USING btree

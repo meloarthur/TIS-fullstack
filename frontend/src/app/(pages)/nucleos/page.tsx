@@ -7,6 +7,7 @@ import { Paginator } from '@/components/paginator';
 import { useDeleteNucleo, useNucleosList } from '@/hooks/networking/nucleos';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 
 export default function NucleosPage() {
   const router = useRouter();
@@ -44,6 +45,7 @@ export default function NucleosPage() {
 
   const handleDelete = async (id: string) => {
     await deleteNucleo(id);
+    toast.success('Núcleo excluído com sucesso!');
     await refetch();
   };
 

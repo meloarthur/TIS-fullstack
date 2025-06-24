@@ -13,7 +13,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className='flex w-full h-full gap-6'>
+    <div className='flex w-full h-full gap-6 p-6'>
       <div className='w-full rounded-2xl flex-center max-lg:flex-col max-lg:hidden'>
         <LoginCarroussel />
       </div>

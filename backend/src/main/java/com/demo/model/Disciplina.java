@@ -14,6 +14,10 @@ public class Disciplina {
     private Long id;
 
     private String nome;
+    private String curso;
+    private String matriz;
+    private int carga_horaria_teorica;
+    private int carga_horaria_pratica;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nucleo_id")
@@ -23,8 +27,12 @@ public class Disciplina {
     public Disciplina() {
     }
 
-    public Disciplina(String nome, NucleoConhecimento nucleoConhecimento) {
+    public Disciplina(String nome, String curso, String matriz, int carga_horaria_teorica, int carga_horaria_pratica, NucleoConhecimento nucleoConhecimento) {
         this.nome = nome;
+        this.curso = curso;
+        this.matriz = matriz;
+        this.carga_horaria_teorica = carga_horaria_teorica;
+        this.carga_horaria_pratica = carga_horaria_pratica;
         this.nucleoConhecimento = nucleoConhecimento;
     }
 
@@ -42,6 +50,38 @@ public class Disciplina {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+    
+    public String getMatriz() {
+        return matriz;
+    }
+
+    public void setMatriz(String matriz) {
+        this.matriz = matriz;
+    }
+    
+    public int getCargaHorariaTeorica() {
+        return carga_horaria_teorica;
+    }
+
+    public void setCargaHorariaTeorica(int carga_horaria_teorica) {
+        this.carga_horaria_teorica = carga_horaria_teorica;
+    }
+    
+    public int getCargaHorariaPratica() {
+        return carga_horaria_pratica;
+    }
+
+    public void setCargaHorariaPratica(int carga_horaria_pratica) {
+        this.carga_horaria_pratica = carga_horaria_pratica;
     }
 
     public NucleoConhecimento getNucleoConhecimento() {

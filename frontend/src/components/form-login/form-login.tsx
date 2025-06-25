@@ -47,7 +47,7 @@ const FormLogin: React.FC<Props> = ({ onSubmit }) => {
             alt='Logo UFG Branco'
             priority
           />
-          <h1 className='text-[32px] font-medium leading-[70px] self-stretch'>
+          <h1 className='text-[32px] font-medium leading-[70px] self-stretch text-base-light'>
             Fazer Login
           </h1>
           {/* <p className='text-base-light/55 text-sm font-normal leading-6'>

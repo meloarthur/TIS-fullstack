@@ -1,6 +1,6 @@
 # 📚 Gerenciamento de Núcleos de Conhecimento
 
-Projeto responsável pela **visualização** e **remoção** de Núcleos de Conhecimento no sistema SGTC da UFG.
+Projeto responsável pela **visualização** e **remoção** de Núcleos de Conhecimento no sistema SOCC da UFG.
 
 ## 📌 Integrantes do Grupo
 - Arthur Cáceres Melo - 201907446
@@ -160,5 +160,5 @@ frontend/
 
 ---
 
-✅ Com isso, seu ambiente estará pronto para visualizar e excluir Núcleos de Conhecimento no sistema SGTC.
+✅ Com isso, seu ambiente estará pronto para visualizar e excluir Núcleos de Conhecimento no sistema SOCC.
 

@@ -2,6 +2,12 @@
 
 Projeto responsável pela **visualização** e **remoção** de Núcleos de Conhecimento no sistema SGTC da UFG.
 
+## 📌 Integrantes do Grupo
+- Arthur Cáceres Melo - 201907446
+- Felipe Oliveira Prado - 202006555
+- Pedro Vitor Silveira Fajardo - 201907495
+- Samuel Lacerda dos Santos Abreu - 202006576
+
 ## 📌 Funcionalidades
 
 - Visualizar detalhes de um núcleo de conhecimento:

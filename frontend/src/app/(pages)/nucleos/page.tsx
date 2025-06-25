@@ -21,7 +21,7 @@ export default function NucleosPage() {
   const [sortKey, setSortKey] = useState<'nome' | 'area'>('nome');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   useEffect(() => {
     setNucleos(initialNucleos);
